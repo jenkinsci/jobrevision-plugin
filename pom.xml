@@ -11,7 +11,7 @@
    <artifactId>jobrevision</artifactId>
    <packaging>hpi</packaging>
    <name>Job Revision Plugin</name>
-   <version>0.4-SNAPSHOT</version>
+   <version>0.4</version>
    <url>http://wiki.jenkins-ci.org/display/JENKINS/JobRevision+Plugin</url>
 
    <licenses>
@@ -29,5 +29,11 @@
          <timezone>+1</timezone>
       </developer>
    </developers>
+
+  <scm>
+    <connection>scm:svn:https://svn.jenkins-ci.org/tags/jobrevision-0.4</connection>
+    <developerConnection>scm:svn:https://svn.jenkins-ci.org/tags/jobrevision-0.4</developerConnection>
+    <url>http://fisheye.jenkins-ci.org/browse/Hudson/tags/jobrevision-0.4</url>
+  </scm>
 </project>
 
