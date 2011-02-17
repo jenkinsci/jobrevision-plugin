@@ -23,6 +23,6 @@
 *******************************************************************************/
 -->
 <div>
-  This plugin allows you to set a revision for the Hudson job.
+  This plugin allows you to set a revision for the Jenkins job.
   The job revision is available by the environment variable JOB_REVISION.
 </div>

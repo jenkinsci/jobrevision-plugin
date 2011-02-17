@@ -4,15 +4,15 @@
    <parent>
       <groupId>org.jvnet.hudson.plugins</groupId>
       <artifactId>plugin</artifactId>
-      <version>1.355</version>
+      <version>1.358</version>
       <relativePath>../pom.xml</relativePath>
    </parent>
 
    <artifactId>jobrevision</artifactId>
    <packaging>hpi</packaging>
-   <name>Job Revision Plug-in</name>
+   <name>Job Revision Plugin</name>
    <version>0.4-SNAPSHOT</version>
-   <url>http://wiki.hudson-ci.org/display/HUDSON/JobRevision+Plugin</url>
+   <url>http://wiki.jenkins-ci.org/display/JENKINS/JobRevision+Plugin</url>
 
    <licenses>
       <license>
