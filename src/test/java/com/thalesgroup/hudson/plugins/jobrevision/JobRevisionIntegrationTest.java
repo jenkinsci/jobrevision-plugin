@@ -24,13 +24,14 @@
 package com.thalesgroup.hudson.plugins.jobrevision;
 
 import hudson.EnvVars;
-import hudson.model.*;
+import hudson.model.FreeStyleBuild;
+import hudson.model.FreeStyleProject;
+import hudson.model.Result;
 import hudson.util.LogTaskListener;
 import org.jvnet.hudson.test.HudsonTestCase;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.List;
 
 
 public class JobRevisionIntegrationTest extends HudsonTestCase {
