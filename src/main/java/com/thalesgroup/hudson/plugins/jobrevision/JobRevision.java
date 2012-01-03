@@ -24,16 +24,16 @@
 package com.thalesgroup.hudson.plugins.jobrevision;
 
 import hudson.Extension;
-import hudson.Launcher;
 import hudson.model.*;
+import net.sf.json.JSONObject;
 import org.kohsuke.stapler.export.Exported;
 import org.kohsuke.stapler.export.ExportedBean;
-
-import java.io.IOException;
 
 
 @ExportedBean
 public class JobRevision extends JobProperty<AbstractProject<?, ?>> {
+
+    private boolean on;
 
     private String revision;
 
@@ -42,6 +42,7 @@ public class JobRevision extends JobProperty<AbstractProject<?, ?>> {
     }
 
     public JobRevision(String revision) {
+        this.on = true;
         this.revision = revision;
     }
 
@@ -62,24 +63,22 @@ public class JobRevision extends JobProperty<AbstractProject<?, ?>> {
             return Messages.plugin_DisplayName();
         }
 
-        public JobRevision newInstance(org.kohsuke.stapler.StaplerRequest req, net.sf.json.JSONObject jsonObject) throws Descriptor.FormException {
-            String revision = jsonObject.getString("revision");
-            if ((revision != null) && (revision.trim().length() != 0))
-                return new JobRevision(revision);
-            else
-                return null;
+        public JobRevision newInstance(org.kohsuke.stapler.StaplerRequest req, JSONObject formData) throws Descriptor.FormException {
+            Object onObject = formData.get("on");
+            if (onObject != null) {
+                if (onObject instanceof JSONObject) {
+                    String revision = ((JSONObject) onObject).getString("revision");
+                    if ((revision != null) && (revision.trim().length() != 0))
+                        return new JobRevision(revision);
+                }
+            }
+            return null;
         }
     }
-
 
     @Override
     public boolean prebuild(hudson.model.AbstractBuild<?, ?> abstractBuild, hudson.model.BuildListener buildListener) {
         abstractBuild.addAction(new JobRevisionEnvironmentAction(revision));
-        return true;
-    }
-
-    @Override
-    public boolean perform(AbstractBuild<?, ?> build, Launcher launcher, BuildListener listener) throws InterruptedException, IOException {
         return true;
     }
 
@@ -89,5 +88,16 @@ public class JobRevision extends JobProperty<AbstractProject<?, ?>> {
         return revision;
     }
 
+    @SuppressWarnings("unused")
+    public boolean isOn() {
+        return on;
+    }
 
+    @SuppressWarnings("unused")
+    private Object readResolve() {
+        if (!on) {
+            on = true;
+        }
+        return this;
+    }
 }
