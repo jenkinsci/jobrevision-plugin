@@ -10,7 +10,7 @@
     <artifactId>jobrevision</artifactId>
     <packaging>hpi</packaging>
     <name>Job Revision Plugin</name>
-    <version>0.6-SNAPSHOT</version>
+    <version>0.6</version>
     <url>http://wiki.jenkins-ci.org/display/JENKINS/JobRevision+Plugin</url>
 
     <licenses>
